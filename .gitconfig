@@ -1,0 +1,7 @@
+[user]
+	name = John Cromartie
+	email = john@element84.com
+[ui]
+	color = auto
+[color]
+	ui = true
