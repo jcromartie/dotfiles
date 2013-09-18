@@ -1,5 +1,9 @@
 require 'fileutils'
 
+# Tracks all files in tracked.txt relative to the home directory by
+# pulling them into the root of the repo. Hopefully there aren't any
+# conflicts... hmm.
+
 tracked = FileList.new(File.read("tracked.txt").split("\n"))
 HOME = ENV["HOME"]
 
