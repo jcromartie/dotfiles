@@ -4,14 +4,13 @@ require 'fileutils'
 # pulling them into the root of the repo. Hopefully there aren't any
 # conflicts... hmm.
 
-tracked = FileList.new(File.read("tracked.txt").split("\n"))
+tracked = FileList.new(File.read("tracked.txt").split("\n")).pathmap("home/%p")
 HOME = ENV["HOME"]
 
 namespace :dotfiles do
   tracked.each do |f|
     local_path = f.pathmap "#{HOME}/%p"
 
-    desc "make a backup of #{f}"
     file f => local_path do |t|
       FileUtils.mkdir_p File.dirname(f)
       FileUtils.cp_r local_path, f
@@ -19,7 +18,6 @@ namespace :dotfiles do
 
 
     if File.exist? f
-      desc "install #{local_path}"
       file local_path do |t|
         FileUtils.cp_r f, local_path
       end
