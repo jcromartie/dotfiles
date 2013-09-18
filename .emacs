@@ -32,3 +32,9 @@
 ;; paredit for awesome-ah ninja power
 (defun turn-on-paredit () (paredit-mode 1))
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
+
+(defun js-indent-2 ()
+  (set-variable 'indent-tabs-mode nil)
+  (set-variable 'js-indent-level 2))
+
+(add-hook 'js-mode-hook 'js-indent-2)
